@@ -17,8 +17,8 @@ contract APIConsumer is ChainlinkClient, ConfirmedOwner {
 
     constructor() ConfirmedOwner(msg.sender) {
         _setChainlinkToken(0x0b9d5D9136855f6FEc3c0993feE6E9CE8a297846);
-        _setChainlinkOracle(0x1C03e89f9ECF4AFf2866DE982311d4A7B3e6eE40);
-        jobId = "cc3f20281fe14f6bab9cff4c6edb9ed1";
+        _setChainlinkOracle(YOUR_ORACLE_CONTRACT_ADDRESS);
+        jobId = "YOUR_JOB_ID";
         fee = (1 * LINK_DIVISIBILITY) / 10; // 0,1 * 10**18 (Varies by network and job)
     }
 
@@ -33,15 +33,15 @@ contract APIConsumer is ChainlinkClient, ConfirmedOwner {
         // Set the URL to perform the GET request on
         req._add(
             "get",
-            "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=ETH&tsyms=USD"
+            "http://host.docker.internal:8080"
         );
-        req._add("path", "RAW,ETH,USD,LASTTRADEID"); 
+        req._add("path", "0,altitude"); 
 
         req._add(
             "get2",
-            "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=ETH&tsyms=USD"
+            "http://host.docker.internal:8080"
         );
-        req._add("path2", "RAW,ETH,USD,LASTUPDATE");
+        req._add("path2", "1,altitude");
 
         int256 timesAmount = 1;
         req._addInt("times", timesAmount);

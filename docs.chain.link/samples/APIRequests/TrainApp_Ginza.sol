@@ -21,8 +21,8 @@ contract DelayNFT is ChainlinkClient, ConfirmedOwner, ERC721URIStorage {
 
     constructor() ConfirmedOwner(msg.sender) ERC721("GinzaLineDelayCertificate", "DCERT") {
         _setChainlinkToken(0x0b9d5D9136855f6FEc3c0993feE6E9CE8a297846); // Avalanche Fuji LINKトークン
-        _setChainlinkOracle(0x66ea90738F17Ada0c5C9bC2E8C0189Bd3C058C79); // Chainlink Oracle
-        jobId = "5ed22ce8b19f4658b2a26af1692495e1";
+        _setChainlinkOracle(YOUR_ORACLE_CONTRACT_ADDRESS); // Chainlink Oracle
+        jobId = "YOUR_JOB_ID";
         fee = (1 * LINK_DIVISIBILITY) / 10; // 0.1 LINK
         tokenIdCounter = 0;
     }
@@ -47,8 +47,8 @@ contract DelayNFT is ChainlinkClient, ConfirmedOwner, ERC721URIStorage {
         volume = _volume;
 
         // 遅延がある場合にMetaMaskアドレスにNFTを発行
-        if (_volume == 0) {
-            issueNFT(0x6AB4792BC7F2eE375652E6e156649F2F73b18A21); // MetaMaskアドレス
+        if (_volume == 1) {
+            issueNFT(YOUR_MetaMask_ADDRESS); // MetaMaskアドレス
         }
     }
 
