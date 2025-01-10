@@ -16,9 +16,9 @@ contract APIConsumer is ChainlinkClient, ConfirmedOwner {
     event RequestVolume(bytes32 indexed requestId, uint256 volume);
 
     constructor() ConfirmedOwner(msg.sender) {
-        _setChainlinkToken(0x0b9d5D9136855f6FEc3c0993feE6E9CE8a297846);
-        _setChainlinkOracle(YOUR_ORACLE_CONTRACT_ADDRESS);
-        jobId = "YOUR_JOB_ID";
+        _setChainlinkToken(LINK_TOKEN_ADDRESS);
+        _setChainlinkOracle(ORACLE_CONTRACT_ADDRESS);
+        jobId = "JOB_ID";
         fee = (1 * LINK_DIVISIBILITY) / 10; // 0,1 * 10**18 (Varies by network and job)
     }
 
